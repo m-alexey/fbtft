@@ -7,6 +7,11 @@ menuconfig FB_TFT
 	select FB_SYS_FOPS
 	select FB_DEFERRED_IO
 	select FB_BACKLIGHT
+config FB_TFT_S1D15B01
+        tristate "FB driver for the S1D15B01 LCD Controller"
+        depends on FB_TFT
+        help
+	Generic Framebuffer support for S1D15B01
 
 config FB_TFT_BD663474
 	tristate "FB driver for the BD663474 LCD Controller"
