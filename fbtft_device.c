@@ -166,7 +166,26 @@ static int pitft_init_sequence[] = {
 
 /* Supported displays in alphabetical order */
 static struct fbtft_device_display displays[] = {
-	{
+	 {
+                .name = "alcatel",
+                .spi = &(struct spi_board_info) {
+                        .modalias = "fb_s1d15b01",
+                        .max_speed_hz = 320000,
+                        .mode = SPI_MODE_0,
+                        .platform_data = &(struct fbtft_platform_data) {
+                                .display = {
+                                        .buswidth = 8,
+                                        .backlight = 1,
+                                },
+                                .gpios = (const struct fbtft_gpio []) {
+                                        { "reset", 1 },
+                                        { "dc", 0 },
+                                        { "led", 3 },
+                                        {},
+                                },
+                        }
+                }
+	},{
 		.name = "adafruit18",
 		.spi = &(struct spi_board_info) {
 			.modalias = "fb_st7735r",
